@@ -35,13 +35,15 @@ PayTM.startPayment(txn_id, customer_id, email, phone, amount, method, successCal
   //Example
   
         PayTM.startPayment(txn_id, customer_id, "idevsathya@gmail.com" ,"******9055", "10", "staging", successCallback, failureCallback);
-              function successCallback(response) {
+              function successCallback(result) {
               //staging (or) product 
-                var transactionBankTxnId = response.MID;
-                var transactionMId = response.ORDERID;
-                var transactionOrderId = response.TXNID;
-                var transactionTxnDate = response.TXNDATE;
-                var transactionTxnId = response.BANKTXNID;
+                         var response = JSON.parse(result);
+
+                          var transactionBankTxnId = response.BANKTXNID;
+                          var transactionOrderId = response.ORDERID;
+                          var transactionTxnDate = response.TXNDATE;
+                          var transactionTxnId = response.TXNID;
+                          var transactionStatus = response.STATUS;
 
                 alert(JSON.stringify(response));
                 console.log("Payed Successfully");

@@ -48,7 +48,7 @@ public class PayTM extends CordovaPlugin {
             throws JSONException {
         if (action.equals("startPayment")) {
             //orderid, cust_id, email, phone, txn_amt
-            startPayment(args.getString(0), args.getString(1), args.getString(2), args.getString(3), args.getString(4), args.getString(5), callbackContext);
+            startPayment(args.getString(0), args.getString(1), args.getString(2), args.getString(3), args.getString(4), args.getString(5),args.getString(6), callbackContext);
             return true;
         }
         return false;
@@ -60,6 +60,7 @@ public class PayTM extends CordovaPlugin {
                               final String phone,
                               final String txn_amt,
                               final String method,
+                              final String callback,
                               final CallbackContext callbackContext){
 
           // paytm_service = PaytmPGService.getProductionService();
@@ -83,7 +84,7 @@ public class PayTM extends CordovaPlugin {
         paramMap.put("EMAIL", email);
         paramMap.put("MOBILE_NO", phone);
         paramMap.put("THEME", "merchant");
-        paramMap.put("CALLBACK_URL", this.PAYTM_VALIDATE_URL);
+        paramMap.put("CALLBACK_URL", callback);
         
         PaytmOrder order = new PaytmOrder(paramMap);
         PaytmMerchant merchant = new PaytmMerchant(this.PAYTM_GENERATE_URL, this.PAYTM_VALIDATE_URL);

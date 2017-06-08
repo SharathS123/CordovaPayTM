@@ -48,7 +48,7 @@ public class PayTM extends CordovaPlugin {
             throws JSONException {
         if (action.equals("startPayment")) {
             //orderid, cust_id, email, phone, txn_amt
-            startPayment(args.getString(0), args.getString(1), args.getString(2), args.getString(3), args.getString(4), args.getString(5),args.getString(6), callbackContext);
+            startPayment(args.getString(0), args.getString(1), args.getString(2), args.getString(3), args.getString(4), args.getString(5),args.getString(6), args.getString(7),callbackContext);
             return true;
         }
         return false;
@@ -61,6 +61,7 @@ public class PayTM extends CordovaPlugin {
                               final String txn_amt,
                               final String method,
                               final String callback,
+                              final String checksum,
                               final CallbackContext callbackContext){
 
           // paytm_service = PaytmPGService.getProductionService();
@@ -85,16 +86,16 @@ public class PayTM extends CordovaPlugin {
         paramMap.put("MOBILE_NO", phone);
         paramMap.put("THEME", "merchant");
         paramMap.put("CALLBACK_URL", callback);
+        paramMap.put("CHECKSUMHASH", checksum);
         
         PaytmOrder order = new PaytmOrder(paramMap);
-        PaytmMerchant merchant = new PaytmMerchant(this.PAYTM_GENERATE_URL, this.PAYTM_VALIDATE_URL);
+        //PaytmMerchant merchant = new PaytmMerchant(this.PAYTM_GENERATE_URL, this.PAYTM_VALIDATE_URL);
 
-        this.paytm_service.initialize(order, merchant, null);
+        this.paytm_service.initialize(order, null);
         this.paytm_service.startPaymentTransaction(cordova.getActivity(), false, false, new PaytmPaymentTransactionCallback()
         {
-
-            @Override
-            public void onTransactionSuccess(Bundle inResponse) {
+            
+            public void onTransactionResponse(Bundle inResponse) {
                 Log.i("Error", "onTransactionSuccess :" + inResponse);
 //                onTransactionSuccess :Bundle[{GATEWAYNAME=WALLET, PAYMENTMODE=PPI, TXNDATE=2015-02-19 17:01:42.0, STATUS=TXN_SUCCESS, MID=sumjkE62398232705701, CURRENCY=INR, ORDERID=5384643, TXNID=70013, IS_CHECKSUM_VALID=N, TXNAMOUNT=100.00, BANKTXNID=CC9795B5013489B9, BANKNAME=, RESPMSG=Txn Successful., RESPCODE=01, CHECKSUMHASH=8liiSa0uQ0S1lCALiQA3FsyQx6xMey9m8VrF+WZu1tTxG+72c3bU1UYZZg+j/UMS5w9F8iHXq051G4/XtVe4L7FSTk5PGnQpp4r6+QkuyWM=}]
 
@@ -111,18 +112,18 @@ public class PayTM extends CordovaPlugin {
                     e.printStackTrace();
                 }
 		Log.v("onTransactionSuccess",  paymentResponse.toString());
-                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, paymentResponse.toString()));
+                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, paymentResponse));
             }
 
-            @Override
-            public void onTransactionFailure(String inErrorMessage,Bundle inResponse)
+            
+            public void onTransactionCancel(String inErrorMessage,Bundle inResponse)
             {
                 Log.i("Error","onTransactionFailure :"+inErrorMessage);
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, inErrorMessage));
             }
 
 
-            @Override
+            
             public void clientAuthenticationFailed(String inErrorMessage)
             {
                 Log.i("Error","clientAuthenticationFailed :"+inErrorMessage);
@@ -130,14 +131,14 @@ public class PayTM extends CordovaPlugin {
             }
 
 
-            @Override
+            
             public void networkNotAvailable() {
                 // TODO Auto-generated method stub
                 Log.i("Error","networkNotAvailable");
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "NetworkNotAvailable"));
             }
 
-            @Override
+            
             public void onErrorLoadingWebPage(int arg0, String arg1, String arg2) {
                 // TODO Auto-generated method stub
                 Log.i("Error","onErrorLoadingWebPage arg0  :"+arg0);
@@ -146,7 +147,7 @@ public class PayTM extends CordovaPlugin {
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "ErrorLoadingWebPage"));
             }
 
-            @Override
+            
             public void someUIErrorOccurred(String arg0) {
                 // TODO Auto-generated method stub
                 Log.i("Error","someUIErrorOccurred :"+arg0);
@@ -154,7 +155,7 @@ public class PayTM extends CordovaPlugin {
             }
 
             // had to be added: NOTE
-            @Override
+            
             public void onBackPressedCancelTransaction() {
                 // TODO Auto-generated method stub
                 Log.i("Error","BackPressedCancelTransaction");

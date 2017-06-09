@@ -8,6 +8,8 @@
 
 #import "PGMerchantConfiguration.h"
 #import "PGServerEnvironment.h"
+#import "PGOrder.h"
+
 
 @class PGOrder;
 @class PGTransactionViewController;

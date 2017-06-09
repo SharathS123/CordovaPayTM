@@ -33,7 +33,7 @@ typedef enum {
 
 //Called when a user has been cancelled the transaction.
 
--(void)didCancelTrasaction:(PGTransactionViewController *)controller;
+-(void)didCancelTransaction:(PGTransactionViewController *)controller;
 
 //Called when a required parameter is missing.
 

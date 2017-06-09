@@ -1,4 +1,4 @@
-#import "PayTM/Headers/PaymentsSDK.h"
+#import "PaymentsSDK.h"
 #import <Cordova/CDV.h>
 
 @interface PayTMCordova : CDVPlugin <PGTransactionDelegate>

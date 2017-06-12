@@ -39,8 +39,8 @@
 
     <config-file target="config.xml" parent="/*">
       <feature name="PayTM">
-        <param name="ios-package" value="PayTM"/>
-        <plugin name="PayTMCordova" value="PayTMCordova"/>
+        <param name="ios-package" value="PayTMCordova"/>
+        <plugin name="PayTM" value="PayTMCordova"/>
       </feature>
     </config-file>
     <config-file target="*-Info.plist" parent="PayTMGenerateChecksumURL">

@@ -2,7 +2,9 @@
 //  PGMerchantConfiguration.h
 //  PaymentsSDK
 //
-//  Copyright (c) 2012-2015 Paytm Mobile Solutions Ltd. All rights reserved.
+//  Created by Pradeep Udupi on 04/02/13.
+//  Copyright (c) 2013 Robosoft. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
 

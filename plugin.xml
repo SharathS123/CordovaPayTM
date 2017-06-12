@@ -64,8 +64,8 @@
     <header-file src="src/ios/PayTM/Headers/PGOrder.h"/>
     <header-file src="src/ios/PayTM/Headers/PGServerEnvironment.h"/>
     <header-file src="src/ios/PayTM/Headers/PGTransactionViewController.h"/>
-    <header-file src="src/ios/PayTMCordova.h"/>
-    <source-file src="src/ios/PayTMCordova.m"/>
+    <header-file src="src/ios/PayTM.h"/>
+    <source-file src="src/ios/PayTM.m"/>
 
     <!-- Facebook framework -->
     <source-file src="src/ios/PayTM/libPaymentsSDK.a" framework="true"/>

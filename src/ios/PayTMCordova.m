@@ -1,7 +1,7 @@
 #import "PayTMCordova.h"
 #import <Cordova/CDV.h>
 
-@implementation PayTMCordova{
+@implementation PayTMCDVCordova{
     NSString* callbackId;
     PGTransactionViewController* txnController;
 }

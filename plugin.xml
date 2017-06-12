@@ -39,7 +39,7 @@
 
     <config-file target="config.xml" parent="/*">
       <feature name="PayTM">
-        <param name="ios-package" value="PayTMCordova"/>
+        <param name="ios-package" value="PayTM"/>
         <plugin name="PayTMCordova" value="PayTMCordova"/>
       </feature>
     </config-file>

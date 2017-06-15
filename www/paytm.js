@@ -3,7 +3,7 @@ var exec = require('cordova/exec');
 var PLUGIN_NAME = 'PayTM';
 
 var PayTM = {
-    console.log("PAYTM_INSIDE", amount);
+    $window.alert("PAYTM_INSIDE", amount);
     startPayment: function(orderId, customerId, email, phone, amount, method,callback,checksum, successCallback, failureCallback) {
     exec(successCallback,
                  failureCallback, 

@@ -38,7 +38,7 @@
   <platform name="ios">
 
     <config-file target="config.xml" parent="/*">
-      <feature name="PayTMCordova">
+      <feature name="PayTM">
         <param name="ios-package" value="PayTMCordova"/>
         <plugin name="PayTMCordova" value="PayTMCordova"/>
       </feature>

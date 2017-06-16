@@ -59,7 +59,7 @@
     <config-file target="*-Info.plist" parent="PayTMWebsite">
         <string>$WEBSITE</string>
     </config-file>
-
+    
     <header-file src="src/ios/PayTM/Headers/PaymentsSDK.h"/>
     <header-file src="src/ios/PayTM/Headers/PGMerchantConfiguration.h"/>
     <header-file src="src/ios/PayTM/Headers/PGOrder.h"/>

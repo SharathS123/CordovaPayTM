@@ -1,5 +1,8 @@
 #import "PayTMCordova.h"
-#import "PaymentsSDK.h"
+#import "PGTransactionViewController.h"
+#import "PGMerchantConfiguration.h"
+#import "PGServerEnvironment.h"
+#import "PGOrder.h"
 #import <Cordova/CDV.h>
 
 @implementation PayTMCordova{

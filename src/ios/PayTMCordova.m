@@ -1,4 +1,5 @@
 #import "PayTMCordova.h"
+#import "PaymentsSDK.h"
 #import <Cordova/CDV.h>
 
 @implementation PayTMCordova{

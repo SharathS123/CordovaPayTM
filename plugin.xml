@@ -31,7 +31,7 @@
   </engines>
 
   <js-module src="www/paytm.js" name="paytm">
-    <clobbers target="window.plugins.paytm" />
+    <clobbers target="PayTM" />
   </js-module>
 
   <!-- ios -->
